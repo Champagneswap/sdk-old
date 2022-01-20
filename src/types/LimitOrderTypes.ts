@@ -19,7 +19,7 @@ export const types = {
   ]
 }
 
-export const cellarTypes = {
+export const bentoTypes = {
   EIP712Domain: [
     { name: 'name', type: 'string' },
     { name: 'chainId', type: 'uint256' },

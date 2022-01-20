@@ -5,7 +5,7 @@ import { BigNumber } from '@ethersproject/bignumber'
 describe('Limit Order', () => {
   it('should create Limit Order', async () => {
     let tokenA = new Token(ChainId.MATIC, '0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9', 18, 'DAI')
-    let tokenB = new Token(ChainId.MATIC, '0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9', 18, 'CHAM')
+    let tokenB = new Token(ChainId.MATIC, '0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9', 18, 'SUSHI')
 
     const amountIn = CurrencyAmount.fromRawAmount(tokenA, '9000000000000000000')
     const amountOut = CurrencyAmount.fromRawAmount(tokenB, '8000000000000000000')
@@ -70,7 +70,7 @@ describe('Limit Order', () => {
       tokenOut: '0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa',
       tokenInDecimals: 18,
       tokenOutDecimals: 18,
-      tokenInSymbol: 'CHAM',
+      tokenInSymbol: 'SUSHI',
       tokenOutSymbol: 'DAI',
       amountIn: '13122000000000000',
       amountOut: '582528',
@@ -115,7 +115,7 @@ describe('Limit Order', () => {
 
   it('should create limit order and return data to sign', () => {
     const tokenA = new Token(ChainId.KOVAN, '0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9', 18, 'DAI')
-    const tokenB = new Token(ChainId.KOVAN, '0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9', 18, 'CHAM')
+    const tokenB = new Token(ChainId.KOVAN, '0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9', 18, 'SUSHI')
 
     const amountIn = CurrencyAmount.fromRawAmount(tokenA, '9000000000000000000')
     const amountOut = CurrencyAmount.fromRawAmount(tokenB, '8000000000000000000')

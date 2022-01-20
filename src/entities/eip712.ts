@@ -1,5 +1,5 @@
-import { CELLAR_ADDRESS, STOP_LIMIT_ORDER_ADDRESS } from '../constants'
-import { cellarTypes, name, types } from '../types'
+import { BENTOBOX_ADDRESS, STOP_LIMIT_ORDER_ADDRESS } from '../constants'
+import { bentoTypes, name, types } from '../types'
 
 import { ChainId } from '../enums'
 import { SigningKey } from '@ethersproject/signing-key'
@@ -27,7 +27,7 @@ export interface Message {
   oracleData: string
 }
 
-export interface CellarApprovalMessage {
+export interface BentoApprovalMessage {
   warning: string
   user: string
   masterContract: string
@@ -53,14 +53,14 @@ export const getTypedData = (message: Message, chainId: ChainId) => {
   return { types, primaryType: 'LimitOrder', domain, message }
 }
 
-export const getTypedDataCellar = (message: CellarApprovalMessage, chainId: ChainId) => {
+export const getTypedDataBento = (message: BentoApprovalMessage, chainId: ChainId) => {
   let domain: Domain = {
-    name: 'Cellar V1',
+    name: 'BentoBox V1',
     chainId: chainId,
-    verifyingContract: CELLAR_ADDRESS[chainId]
+    verifyingContract: BENTOBOX_ADDRESS[chainId]
   }
   return {
-    types: cellarTypes,
+    types: bentoTypes,
     primaryType: 'SetMasterContractApproval',
     domain,
     message
@@ -90,29 +90,29 @@ export const getSignatureWithProvider = async (
   return { v, r, s }
 }
 
-export const getSignatureWithProviderCellar = async (
-  message: CellarApprovalMessage,
+export const getSignatureWithProviderBentobox = async (
+  message: BentoApprovalMessage,
   chainId: ChainId,
   provider: Web3Provider
 ): Promise<{ v: number; r: string; s: string }> => {
-  const typedData = getTypedDataCellar(message, chainId)
+  const typedData = getTypedDataBento(message, chainId)
   const signature = await provider.send('eth_signTypedData_v4', [message.user, JSON.stringify(typedData)])
   const { v, r, s } = splitSignature(signature)
   return { v, r, s }
 }
 
-export const getSignatureCellar = async (cellarApproval: CellarApprovalMessage, chainId: ChainId, privateKey: string) => {
+export const getSignatureBento = async (bentoApproval: BentoApprovalMessage, chainId: ChainId, privateKey: string) => {
   let domain: Domain = {
-    name: 'Cellar V1',
+    name: 'BentoBox V1',
     chainId: chainId,
-    verifyingContract: CELLAR_ADDRESS[chainId]
+    verifyingContract: BENTOBOX_ADDRESS[chainId]
   }
   return sign(
     {
-      types: cellarTypes,
+      types: bentoTypes,
       primaryType: 'SetMasterContractApproval',
       domain,
-      message: cellarApproval
+      message: bentoApproval
     },
     privateKey
   )
