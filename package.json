@@ -1,14 +1,14 @@
 {
   "name": "@champagneswap/sdk",
   "license": "MIT",
-  "version": "5.0.0-canary.117",
-  "description": "🛠 An SDK for building applications on top of ChampagneSwap.",
+  "version": "5.0.0-canary.119",
+  "description": "🛠 An SDK for building applications on top of Champagneswap.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "repository": "https://github.com/champagneswap/champagneswap-sdk",
+  "repository": "https://github.com/champagneswap/core-sdk",
   "keywords": [
     "champagneswap",
     "ethereum",
@@ -45,7 +45,7 @@
     "@ethersproject/signing-key": "^5.4.0",
     "@ethersproject/solidity": "^5.4.0",
     "@ethersproject/transactions": "^5.4.0",
-    "@sushiswap/core": "^2.0.0-canary.1",
+    "@champagneswap/core": "^2.0.0-canary.2",
     "big.js": "^6.1.0",
     "decimal.js-light": "^2.5.0",
     "eip-712": "^0.4.3",
@@ -56,7 +56,7 @@
     "toformat": "^2.0.0"
   },
   "devDependencies": {
-    "@sushiswap/prettier-config": "^0.1.0",
+    "@champagneswap/prettier-config": "^0.1.0",
     "@types/big.js": "^6.1.0",
     "babel-plugin-transform-jsbi-to-bigint": "^1.4.0",
     "husky": "^7.0.0",
